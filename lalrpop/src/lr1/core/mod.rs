@@ -68,6 +68,9 @@ impl<'grammar> LR1<'grammar> {
 
                     Symbol::Nonterminal(s) => {
                         let prev = this_state.gotos.insert(s, next_state);
+                        if !prev.is_none() {
+                            println!("this is where the shift reduce error is");
+                        }
                         assert!(prev.is_none());
                     }
                 }
